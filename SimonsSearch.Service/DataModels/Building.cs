@@ -8,5 +8,10 @@ namespace SimonsSearch.Service.DataModels
         public string ShortCut { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        public override string ToString()
+        {
+            return $"{ShortCut} {Name} {Description}";
+        }
     }
 }

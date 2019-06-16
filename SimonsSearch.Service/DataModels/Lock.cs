@@ -13,5 +13,10 @@ namespace SimonsSearch.Service.DataModels
         public string Floor { get; set; }
         public string RoomNumber { get; set; }
 
+        public override string ToString()
+        {
+            return $"{Type} {Name} {Description} {SerialNumber} {Floor} {RoomNumber}";
+        }
+
     }
 }

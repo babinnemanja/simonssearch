@@ -10,5 +10,10 @@ namespace SimonsSearch.Service.DataModels
         public string Owner { get; set; }
         public string Description { get; set; }
         public string SerialNumber { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Type} {Owner} {Description} {SerialNumber}";
+        }
     }
 }
