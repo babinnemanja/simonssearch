@@ -7,45 +7,48 @@ namespace SimonsSearch.Service
 {
     public class SearchEngine : ISearchEngine
     {
-        private readonly ISearchRepository _searchRepository;
         private readonly SearchEngineWeigthCalculator _searchEngineWeigthCalculator = new SearchEngineWeigthCalculator();
+        private static DataFile _data;
 
         public SearchEngine(ISearchRepository searchRepository)
         {
-            _searchRepository = searchRepository;
+            if(_data == null)
+            {
+                _data = searchRepository.LoadData();
+            }
         }
 
         public List<SearchResult> GetSearchResult(string term)
         {
             var termSanitized = term.Trim().ToLowerInvariant();
-            var result = new List<SearchResult>();
 
-            var data = _searchRepository.LoadData();
+            var searchResults = new List<SearchResult>();
 
+            GetBuildings(termSanitized, searchResults);
+            GetLocks(termSanitized, searchResults);
 
-            return result;
+            return searchResults;
         }
 
-        private List<SearchResult> GetBuildings(string term, DataFile data)
+        private void GetBuildings(string term, List<SearchResult> searchResults)
         {
-           var searchResult = new List<SearchResult>();
+           foreach(var building in _data.Buildings.Where(w => w.ToString().Contains(term)))
+           {
+               //add and boost entity 
+               searchResults.Add(_searchEngineWeigthCalculator.ToSearchResult(building, term));
 
-           foreach(var building in data.Buildings)
+               //add and boost all the child entities 
+               searchResults.AddRange(_data.Locks.Where(w => w.BuildingId == building.Id)
+                   .Select(lck => _searchEngineWeigthCalculator.ToTransientSearchResult(lck, building, term)));
+           }
+        }
+
+        private void GetLocks(string term, List<SearchResult> searchResults)
+        {
+            foreach(var lck in _data.Locks.Where(w => w.ToString().Contains(term)))
             {
-                if (building.ToString().Contains(term))
-                {
-                    searchResult.Add(_searchEngineWeigthCalculator.ToSearchResult(building, term));
-                }
+                searchResults.Add(_searchEngineWeigthCalculator.ToSearchResult(lck, term));
             }
-
-            return searchResult;
-
-
-        }
-
-        private void CalculateBoost(List<SearchResult> searchResults) 
-        {
-
         }
     }
 }

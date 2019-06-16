@@ -28,6 +28,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SimonsSearch.FE", "SimonsSe
 		SlnRelativePath = "SimonsSearch.FE\"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimonsSearch.Service.Test", "SimonsSearch.Service.Test\SimonsSearch.Service.Test.csproj", "{416B7F1F-350C-45FA-B83F-792889648D50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{05BBFF61-B06E-4350-916D-70BC06B9B334}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05BBFF61-B06E-4350-916D-70BC06B9B334}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{05BBFF61-B06E-4350-916D-70BC06B9B334}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{416B7F1F-350C-45FA-B83F-792889648D50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{416B7F1F-350C-45FA-B83F-792889648D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{416B7F1F-350C-45FA-B83F-792889648D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{416B7F1F-350C-45FA-B83F-792889648D50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
