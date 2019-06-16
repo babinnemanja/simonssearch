@@ -15,7 +15,7 @@ namespace SimonsSearch.Service.DataModels
 
         public override string ToString()
         {
-            return $"{Type} {Name} {Description} {SerialNumber} {Floor} {RoomNumber}";
+            return $"{Type.ToLowerInvariant()} {Name.ToLowerInvariant()} {Description.ToLowerInvariant()} {SerialNumber.ToLowerInvariant()} {Floor.ToLowerInvariant()} {RoomNumber.ToLowerInvariant()}";
         }
 
     }

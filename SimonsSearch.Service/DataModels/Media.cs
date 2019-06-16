@@ -13,7 +13,7 @@ namespace SimonsSearch.Service.DataModels
 
         public override string ToString()
         {
-            return $"{Type} {Owner} {Description} {SerialNumber}";
+            return $"{Type.ToLowerInvariant()} {Owner.ToLowerInvariant()} {Description.ToLowerInvariant()} {SerialNumber.ToLowerInvariant()}";
         }
     }
 }

@@ -8,6 +8,7 @@ namespace SimonsSearch.Service
     public class SearchEngine : ISearchEngine
     {
         private readonly ISearchRepository _searchRepository;
+        private readonly SearchEngineWeigthCalculator _searchEngineWeigthCalculator = new SearchEngineWeigthCalculator();
 
         public SearchEngine(ISearchRepository searchRepository)
         {
@@ -23,6 +24,28 @@ namespace SimonsSearch.Service
 
 
             return result;
+        }
+
+        private List<SearchResult> GetBuildings(string term, DataFile data)
+        {
+           var searchResult = new List<SearchResult>();
+
+           foreach(var building in data.Buildings)
+            {
+                if (building.ToString().Contains(term))
+                {
+                    searchResult.Add(_searchEngineWeigthCalculator.ToSearchResult(building, term));
+                }
+            }
+
+            return searchResult;
+
+
+        }
+
+        private void CalculateBoost(List<SearchResult> searchResults) 
+        {
+
         }
     }
 }

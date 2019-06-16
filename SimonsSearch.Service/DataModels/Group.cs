@@ -10,7 +10,7 @@ namespace SimonsSearch.Service.DataModels
 
         public override string ToString()
         {
-            return $"{Name} {Description}";
+            return $"{Name.ToLowerInvariant()} {Description.ToLowerInvariant()}";
         }
     }
 }
