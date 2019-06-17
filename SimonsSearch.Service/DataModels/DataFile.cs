@@ -4,9 +4,9 @@ namespace SimonsSearch.Service.DataModels
 {
     public class DataFile
     {
-        public HashSet<Building> Buildings { get; set; }
-        public HashSet<Lock> Locks { get; set; }
-        public HashSet<Group> Groups { get; set; }
-        public HashSet<Media> Media { get; set; }
+        public List<Building> Buildings { get; set; }
+        public List<Lock> Locks { get; set; }
+        public List<Group> Groups { get; set; }
+        public List<Media> Media { get; set; }
     }
 }
