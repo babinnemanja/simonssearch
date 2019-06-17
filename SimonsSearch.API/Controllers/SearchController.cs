@@ -12,18 +12,18 @@ namespace SimonsSearch.API.Controllers
     [ApiController]
     public class SearchController : ControllerBase
     {
-        private readonly ISearchRepository _searchRepository;
+        private readonly ISearchEngine _searchEngine;
 
-        public SearchController(ISearchRepository searchRepository)
+        public SearchController(ISearchEngine searchEngine)
         {
-            _searchRepository = searchRepository ?? throw new ArgumentNullException(nameof(searchRepository));
+            _searchEngine = searchEngine ?? throw new ArgumentNullException(nameof(searchEngine));
         }
 
         [HttpGet]
         public IActionResult Search([FromQuery] string term)
         {
-            var data = _searchRepository.LoadData();
-            return Ok();
+            var data = _searchEngine.GetSearchResult(term);
+            return Ok(data);
         }
     }
 }

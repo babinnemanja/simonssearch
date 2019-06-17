@@ -5,6 +5,6 @@ namespace SimonsSearch.Service.Interfaces
 {
     public interface ISearchEngine
     {
-        List<SearchResult> GetSearchResult(string term);
+        IReadOnlyList<SearchResult> GetSearchResult(string term);
     }
 }

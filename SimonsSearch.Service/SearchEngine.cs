@@ -7,32 +7,33 @@ namespace SimonsSearch.Service
 {
     public class SearchEngine : ISearchEngine
     {
-        private readonly SearchEngineWeigthCalculator _searchEngineWeigthCalculator = new SearchEngineWeigthCalculator();
+        private readonly ISearchEngineWeigthCalculator _searchEngineWeigthCalculator;
         private static DataFile _data;
 
-        public SearchEngine(ISearchRepository searchRepository)
+        public SearchEngine(ISearchRepository searchRepository, ISearchEngineWeigthCalculator searchEngineWeigthCalculator)
         {
+            _searchEngineWeigthCalculator = searchEngineWeigthCalculator;
+
             if(_data == null)
             {
                 _data = searchRepository.LoadData();
             }
         }
 
-        public List<SearchResult> GetSearchResult(string term)
+        public IReadOnlyList<SearchResult> GetSearchResult(string term)
         {
             var termSanitized = term.Trim().ToLowerInvariant();
 
-            var searchResults = new List<SearchResult>();
-
-            GetBuildings(termSanitized, searchResults);
-            GetLocks(termSanitized, searchResults);
-
-            return searchResults;
+            var searchResults = ProcessBuildingsAndLocks(termSanitized);
+            
+            return searchResults.OrderByDescending(o => o.Weight).ToList();
         }
 
-        private void GetBuildings(string term, List<SearchResult> searchResults)
+        private List<SearchResult> ProcessBuildingsAndLocks(string term)
         {
-           foreach(var building in _data.Buildings.Where(w => w.ToString().Contains(term)))
+            var searchResults = new List<SearchResult>();
+
+            foreach (var building in _data.Buildings.Where(w => w.ToString().Contains(term)))
            {
                //add and boost entity 
                searchResults.Add(_searchEngineWeigthCalculator.ToSearchResult(building, term));
@@ -41,11 +42,15 @@ namespace SimonsSearch.Service
                searchResults.AddRange(_data.Locks.Where(w => w.BuildingId == building.Id)
                    .Select(lck => _searchEngineWeigthCalculator.ToTransientSearchResult(lck, building, term)));
            }
+
+            ProcessLocks(term, searchResults);
+
+            return searchResults;
         }
 
-        private void GetLocks(string term, List<SearchResult> searchResults)
+        private void ProcessLocks(string term, List<SearchResult> searchResults)
         {
-            foreach(var lck in _data.Locks.Where(w => w.ToString().Contains(term)))
+            foreach(var lck in _data.Locks.Where(w => w.ToString().Contains(term) && !searchResults.Select(s => s.Id).Contains(w.Id)))
             {
                 searchResults.Add(_searchEngineWeigthCalculator.ToSearchResult(lck, term));
             }

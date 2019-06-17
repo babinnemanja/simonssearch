@@ -4,18 +4,37 @@ namespace SimonsSearch.Service.DataModels
 {
     public class Lock
     {
-        public Guid Id { get; set; }
-        public Guid BuildingId { get; set; }
-        public string Type { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string SerialNumber { get; set; }
-        public string Floor { get; set; }
-        public string RoomNumber { get; set; }
+        private string _cache = string.Empty;
+
+        public Lock(Guid id, Guid buildingId, string type, string name, string description, string serialNumber, string floor, string roomNumber)
+        {
+            Id = id;
+            BuildingId = buildingId;
+            Type = type ?? string.Empty;
+            Name = name ?? string.Empty;
+            Description = description ?? string.Empty;
+            SerialNumber = serialNumber ?? string.Empty;
+            Floor = floor ?? string.Empty;
+            RoomNumber = roomNumber ?? string.Empty;
+        }
+
+        public Guid Id { get; private set; }
+        public Guid BuildingId { get; private set; }
+        public string Type { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public string SerialNumber { get; private set; }
+        public string Floor { get; private set; }
+        public string RoomNumber { get; private set; }
 
         public override string ToString()
         {
-            return $"{Type.ToLowerInvariant()} {Name.ToLowerInvariant()} {Description.ToLowerInvariant()} {SerialNumber.ToLowerInvariant()} {Floor.ToLowerInvariant()} {RoomNumber.ToLowerInvariant()}";
+            if (string.IsNullOrEmpty(_cache))
+            {
+                _cache = $"{Type.ToLowerInvariant()} {Name.ToLowerInvariant()} {Description.ToLowerInvariant()} {SerialNumber.ToLowerInvariant()} {Floor.ToLowerInvariant()} {RoomNumber.ToLowerInvariant()}";
+            }
+
+            return _cache;
         }
 
     }
