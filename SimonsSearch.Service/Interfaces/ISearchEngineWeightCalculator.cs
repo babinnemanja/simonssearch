@@ -2,7 +2,7 @@
 
 namespace SimonsSearch.Service.Interfaces
 {
-    public interface ISearchEngineWeigthCalculator
+    public interface ISearchEngineWeightCalculator
     {
         SearchResult ToSearchResult(Building building, string term);
         SearchResult ToSearchResult(Lock lck, string term);

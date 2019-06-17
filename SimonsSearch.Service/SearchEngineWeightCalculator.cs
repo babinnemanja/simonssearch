@@ -4,7 +4,7 @@ using SimonsSearch.Service.Interfaces;
 
 namespace SimonsSearch.Service
 {
-    public class SearchEngineWeigthCalculator : ISearchEngineWeigthCalculator
+    public class SearchEngineWeightCalculator : ISearchEngineWeightCalculator
     {
         public SearchResult ToSearchResult(Building building, string term)
         {

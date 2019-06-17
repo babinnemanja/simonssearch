@@ -12,7 +12,7 @@ namespace SimonsSearch.Service.Test
         {
             var building = new Building(Guid.NewGuid(), "TB", "Test Building", "This is unit test building");
 
-            var calculator = new SearchEngineWeigthCalculator();
+            var calculator = new SearchEngineWeightCalculator();
 
             var searchResult = calculator.ToSearchResult(building, "unit");
 
@@ -27,7 +27,7 @@ namespace SimonsSearch.Service.Test
         {
             var building = new Building(Guid.NewGuid(), "TB", "Test Building", "This is unit test building");
 
-            var calculator = new SearchEngineWeigthCalculator();
+            var calculator = new SearchEngineWeightCalculator();
 
             var searchResult = calculator.ToSearchResult(building, "test");
 
@@ -42,7 +42,7 @@ namespace SimonsSearch.Service.Test
         {
             var lck = new Lock(Guid.NewGuid(), Guid.NewGuid(), "Lock", "Test Lock", "This is unit test building", "T123T", "12", "13");
 
-            var calculator = new SearchEngineWeigthCalculator();
+            var calculator = new SearchEngineWeightCalculator();
 
             var searchResult = calculator.ToSearchResult(lck, "unit");
 
@@ -57,7 +57,7 @@ namespace SimonsSearch.Service.Test
         {
             var lck = new Lock(Guid.NewGuid(), Guid.NewGuid(), "Lock", "Test Lock", "This is unit test lock", "T123T", "12", "13");
 
-            var calculator = new SearchEngineWeigthCalculator();
+            var calculator = new SearchEngineWeightCalculator();
 
             var searchResult = calculator.ToSearchResult(lck, "lock");
 
@@ -73,7 +73,7 @@ namespace SimonsSearch.Service.Test
             var building = new Building(Guid.NewGuid(), "TB", "Test Building", "This is unit test building");
             var lck = new Lock(Guid.NewGuid(), building.Id, "Lock", "Test Lock", "This is unit test lock", "T123T", "12", "13");
 
-            var calculator = new SearchEngineWeigthCalculator();
+            var calculator = new SearchEngineWeightCalculator();
 
             var searchResult = calculator.ToTransientSearchResult(lck, building, "building");
 
@@ -84,12 +84,12 @@ namespace SimonsSearch.Service.Test
         }
 
         [Test]
-        public void When_Lock_Matched_As_Transient_On_Owne_Properties_Weigth_Should_Be_Calculated()
+        public void When_Lock_Matched_As_Transient_On_Own_Properties_Weigth_Should_Be_Calculated()
         {
             var building = new Building(Guid.NewGuid(), "TB", "Test Building", "This is unit test building");
             var lck = new Lock(Guid.NewGuid(), building.Id, "Lock", "Test Lock", "This is unit test lock", "T123T", "12", "13");
 
-            var calculator = new SearchEngineWeigthCalculator();
+            var calculator = new SearchEngineWeightCalculator();
 
             var searchResult = calculator.ToTransientSearchResult(lck, building, "test");
 

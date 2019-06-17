@@ -7,10 +7,10 @@ namespace SimonsSearch.Service
 {
     public class SearchEngine : ISearchEngine
     {
-        private readonly ISearchEngineWeigthCalculator _searchEngineWeigthCalculator;
+        private readonly ISearchEngineWeightCalculator _searchEngineWeigthCalculator;
         private static DataFile _data;
 
-        public SearchEngine(ISearchRepository searchRepository, ISearchEngineWeigthCalculator searchEngineWeigthCalculator)
+        public SearchEngine(ISearchRepository searchRepository, ISearchEngineWeightCalculator searchEngineWeigthCalculator)
         {
             _searchEngineWeigthCalculator = searchEngineWeigthCalculator;
 

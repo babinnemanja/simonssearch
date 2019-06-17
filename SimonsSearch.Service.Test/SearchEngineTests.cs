@@ -11,13 +11,13 @@ namespace SimonsSearch.Service.Test
     [TestFixture]
     public class SearchEngineTests
     {
-        private ISearchEngineWeigthCalculator _searchEngineWeigthCalculator;
+        private ISearchEngineWeightCalculator _searchEngineWeigthCalculator;
         private ISearchRepository _searchRepository;
 
         [SetUp]
         public void SetUp()
         {
-            _searchEngineWeigthCalculator = Substitute.For<ISearchEngineWeigthCalculator>();
+            _searchEngineWeigthCalculator = Substitute.For<ISearchEngineWeightCalculator>();
             _searchRepository = Substitute.For<ISearchRepository>();
         }
 
@@ -78,7 +78,7 @@ namespace SimonsSearch.Service.Test
                 Weight = 55
             });
 
-            var result = searchEngine.GetSearchResult("test");
+            var result = searchEngine.GetSearchResult(term);
 
             Assert.IsNotNull(result);
             _searchEngineWeigthCalculator.Received(1).ToTransientSearchResult(lockOne, building, term);
