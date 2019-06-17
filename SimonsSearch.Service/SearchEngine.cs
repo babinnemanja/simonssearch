@@ -67,7 +67,7 @@ namespace SimonsSearch.Service
                     .Select(media => _searchEngineWeigthCalculator.ToTransientSearchResult(media, group, term)));
             }
 
-            ProcessMedium(term, searchResults);
+            ProcessMedia(term, searchResults);
 
             return searchResults;
         }
@@ -82,7 +82,7 @@ namespace SimonsSearch.Service
             }
         }
 
-        private void ProcessMedium(string term, List<SearchResult> searchResults)
+        private void ProcessMedia(string term, List<SearchResult> searchResults)
         {
             if (_data.Media == null) { return; }
 
