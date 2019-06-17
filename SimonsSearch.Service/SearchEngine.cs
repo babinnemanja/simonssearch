@@ -14,7 +14,7 @@ namespace SimonsSearch.Service
         {
             _searchEngineWeigthCalculator = searchEngineWeigthCalculator;
 
-            if(_data == null)
+            if (_data == null)
             {
                 _data = searchRepository.LoadData();
             }
@@ -25,7 +25,8 @@ namespace SimonsSearch.Service
             var termSanitized = term.Trim().ToLowerInvariant();
 
             var searchResults = ProcessBuildingsAndLocks(termSanitized);
-            
+            searchResults.AddRange(ProcessGroupsAndMedia(termSanitized));
+
             return searchResults.OrderByDescending(o => o.Weight).ToList();
         }
 
@@ -33,26 +34,61 @@ namespace SimonsSearch.Service
         {
             var searchResults = new List<SearchResult>();
 
-            foreach (var building in _data.Buildings.Where(w => w.ToString().Contains(term)))
-           {
-               //add and boost entity 
-               searchResults.Add(_searchEngineWeigthCalculator.ToSearchResult(building, term));
+            if (_data.Buildings == null) { return searchResults; }
 
-               //add and boost all the child entities 
-               searchResults.AddRange(_data.Locks.Where(w => w.BuildingId == building.Id)
-                   .Select(lck => _searchEngineWeigthCalculator.ToTransientSearchResult(lck, building, term)));
-           }
+            foreach (var building in _data.Buildings.Where(w => w.ToString().Contains(term)))
+            {
+                //add and boost entity 
+                searchResults.Add(_searchEngineWeigthCalculator.ToSearchResult(building, term));
+
+                //add and boost all the child entities 
+                searchResults.AddRange(_data.Locks.Where(w => w.BuildingId == building.Id)
+                    .Select(lck => _searchEngineWeigthCalculator.ToTransientSearchResult(lck, building, term)));
+            }
 
             ProcessLocks(term, searchResults);
 
             return searchResults;
         }
 
+        private List<SearchResult> ProcessGroupsAndMedia(string term)
+        {
+            var searchResults = new List<SearchResult>();
+
+            if (_data.Groups == null) { return searchResults; }
+
+            foreach (var group in _data.Groups.Where(w => w.ToString().Contains(term)))
+            {
+                //add and boost entity 
+                searchResults.Add(_searchEngineWeigthCalculator.ToSearchResult(group, term));
+
+                //add and boost all the child entities 
+                searchResults.AddRange(_data.Media.Where(w => w.GroupId == group.Id)
+                    .Select(media => _searchEngineWeigthCalculator.ToTransientSearchResult(media, group, term)));
+            }
+
+            ProcessMedium(term, searchResults);
+
+            return searchResults;
+        }
+
         private void ProcessLocks(string term, List<SearchResult> searchResults)
         {
-            foreach(var lck in _data.Locks.Where(w => w.ToString().Contains(term) && !searchResults.Select(s => s.Id).Contains(w.Id)))
+            if (_data.Locks == null) { return; }
+
+            foreach (var lck in _data.Locks.Where(w => w.ToString().Contains(term) && !searchResults.Select(s => s.Id).Contains(w.Id)))
             {
                 searchResults.Add(_searchEngineWeigthCalculator.ToSearchResult(lck, term));
+            }
+        }
+
+        private void ProcessMedium(string term, List<SearchResult> searchResults)
+        {
+            if (_data.Media == null) { return; }
+
+            foreach (var media in _data.Media.Where(w => w.ToString().Contains(term) && !searchResults.Select(s => s.Id).Contains(w.Id)))
+            {
+                searchResults.Add(_searchEngineWeigthCalculator.ToSearchResult(media, term));
             }
         }
     }
