@@ -31,6 +31,10 @@ namespace SimonsSearch.API
             services.AddSingleton<ISearchRepository, SearchRepository>();
             services.AddTransient<ISearchEngine, SearchEngine>();
             services.AddTransient<ISearchEngineWeightCalculator, SearchEngineWeightCalculator>();
+
+            services.AddLogging(builder => builder
+                            .AddConsole());
+            services.BuildServiceProvider().GetService<ILoggerFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
