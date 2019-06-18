@@ -12,6 +12,6 @@ import { SearchResult } from '../shared/search-result.model';
     `
 })
 
-export class SearchResultListComponent{
+export class SearchResultComponent{
     @Input() searchResults:SearchResult[];
 }
