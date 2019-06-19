@@ -17,6 +17,8 @@ namespace SimonsSearch.API
 {
     public class Startup
     {
+        readonly string CorsConfig = "CorsConfig";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -35,6 +37,15 @@ namespace SimonsSearch.API
             services.AddLogging(builder => builder
                             .AddConsole());
             services.BuildServiceProvider().GetService<ILoggerFactory>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(CorsConfig,
+                builder =>
+                {
+                    builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +61,7 @@ namespace SimonsSearch.API
                 app.UseHsts();
             }
 
+            app.UseCors(CorsConfig);
             app.UseHttpsRedirection();
             app.UseMvc();
         }
