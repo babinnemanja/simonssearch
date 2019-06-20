@@ -1,0 +1,6 @@
+<form #searchForm="ngForm" (ngSubmit)="search(searchForm.value)" class="form-inline md-form mr-auto mb-4">
+    <input (ngModel)="searchText" name="searchText" id="searchText" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+    <button mdbBtn size="sm" gradient="aqua" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search</button>  
+</form>
+<search-result *ngIf="hasData" [searchResults]="searchResults"></search-result>
+<h3 *ngIf="!hasData && searchTriggered">No record's found</h3>

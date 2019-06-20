@@ -3,32 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimonsSearch.Service", "SimonsSearch.Service\SimonsSearch.Service.csproj", "{66A2C619-FDEB-4641-84CA-7C59150ACE75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimonsSearch.Service", "SimonsSearch.Service\SimonsSearch.Service.csproj", "{66A2C619-FDEB-4641-84CA-7C59150ACE75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimonsSearch.API", "SimonsSearch.API\SimonsSearch.API.csproj", "{848F160F-16B4-4002-8453-2D281F91E1A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimonsSearch.API", "SimonsSearch.API\SimonsSearch.API.csproj", "{848F160F-16B4-4002-8453-2D281F91E1A3}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SimonsSearch.FE", "SimonsSearch.FE\", "{05BBFF61-B06E-4350-916D-70BC06B9B334}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_63539"
-		Debug.AspNetCompiler.PhysicalPath = "SimonsSearch.FE\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63539\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_63539"
-		Release.AspNetCompiler.PhysicalPath = "SimonsSearch.FE\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63539\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "63539"
-		SlnRelativePath = "SimonsSearch.FE\"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimonsSearch.Service.Test", "SimonsSearch.Service.Test\SimonsSearch.Service.Test.csproj", "{416B7F1F-350C-45FA-B83F-792889648D50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimonsSearch.Service.Test", "SimonsSearch.Service.Test\SimonsSearch.Service.Test.csproj", "{416B7F1F-350C-45FA-B83F-792889648D50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,10 +23,6 @@ Global
 		{848F160F-16B4-4002-8453-2D281F91E1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{848F160F-16B4-4002-8453-2D281F91E1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{848F160F-16B4-4002-8453-2D281F91E1A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{05BBFF61-B06E-4350-916D-70BC06B9B334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05BBFF61-B06E-4350-916D-70BC06B9B334}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05BBFF61-B06E-4350-916D-70BC06B9B334}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{05BBFF61-B06E-4350-916D-70BC06B9B334}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{416B7F1F-350C-45FA-B83F-792889648D50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{416B7F1F-350C-45FA-B83F-792889648D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{416B7F1F-350C-45FA-B83F-792889648D50}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,30 +1,31 @@
-import { Component, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { SearchResult } from '../shared/search-result.model';
 import { SearchService } from '../services/search.service';
 
 @Component({
     selector: 'search-form',
-    template: `
-    <form #searchForm="ngForm" (ngSubmit)="search(searchForm.value)" class="form-inline md-form mr-auto mb-4">
-        <input (ngModel)="searchText" name="searchText" id="searchText" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button mdbBtn size="sm" gradient="aqua" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit">Search</button>  
-    </form>
-    <search-result [searchResults]="searchResults"></search-result>
-    `
+    templateUrl: './search-form.component.html'
 })
 
-export class SearchFormComponent{
+export class SearchFormComponent implements OnInit{
     searchText;
+    hasData:boolean;
+    searchTriggered:boolean;
     searchResults: SearchResult[];
 
     constructor(private searchService: SearchService){
 
     }
 
+    ngOnInit() {
+        this.searchTriggered = false;
+      }
+
     search(form){
         this.searchService.getSearchResult(form.searchText).subscribe((data) => {
-            console.info(data);
             this.searchResults = data;
+            this.hasData = data !== undefined && data.length !== 0;
+            this.searchTriggered = true;
         });
     }
 }

@@ -3,4 +3,6 @@ export interface SearchResult {
     Description: string;
     Name: string;
     Weight: number;
+    EntityType: string;
+    SerialNumber: string;
 }

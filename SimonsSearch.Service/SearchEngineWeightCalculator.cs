@@ -17,36 +17,41 @@ namespace SimonsSearch.Service
                 Id = building.Id,
                 Name = building.Name,
                 Description = building.Description,
-                Weight = weigth
+                Weight = weigth,
+                EntityType = EntityType.Building.ToString()
             };
 
         }
 
-        public SearchResult ToSearchResult(Lock lck, string term)
+        public SearchResult ToSearchResult(Lock @lock, string term)
         {
             return new SearchResult
             {
-                Id = lck.Id,
-                Name = lck.Name,
-                Description = lck.Description,
-                Weight = CalculateLockWeight(lck, term)
+                Id = @lock.Id,
+                Name = @lock.Name,
+                Description = @lock.Description,
+                Weight = CalculateLockWeight(@lock, term),
+                EntityType = EntityType.Lock.ToString(),
+                SerialNumber = @lock.SerialNumber
             };
         }
 
-        public SearchResult ToTransientSearchResult(Lock lck, Building building, string term)
+        public SearchResult ToTransientSearchResult(Lock @lock, Building building, string term)
         {
             var weigth = CalculateTransientWeigth(building.Name, term, new PropertyDefinition(nameof(Building.Name), nameof(Building)));
             weigth += CalculateTransientWeigth(building.Description, term, new PropertyDefinition(nameof(Building.Description), nameof(Building)));
             weigth += CalculateTransientWeigth(building.ShortCut, term, new PropertyDefinition(nameof(Building.ShortCut), nameof(Building)));
 
-            weigth += CalculateLockWeight(lck, term);
+            weigth += CalculateLockWeight(@lock, term);
 
             return new SearchResult
             {
-                Id = lck.Id,
-                Description = lck.Description,
-                Name = lck.Name,
-                Weight = weigth
+                Id = @lock.Id,
+                Description = @lock.Description,
+                Name = @lock.Name,
+                Weight = weigth,
+                SerialNumber = @lock.SerialNumber,
+                EntityType = EntityType.Lock.ToString()
             };
         }
 
@@ -60,7 +65,8 @@ namespace SimonsSearch.Service
                 Id = group.Id,
                 Description = group.Description,
                 Name = group.Name,
-                Weight = weigth
+                Weight = weigth,
+                EntityType = EntityType.Group.ToString()
             };
         }
 
@@ -71,7 +77,8 @@ namespace SimonsSearch.Service
                 Id = media.Id,
                 Description = media.Description,
                 Name = string.Empty,
-                Weight = CalculateMediaWeight(media, term)
+                Weight = CalculateMediaWeight(media, term),
+                EntityType = EntityType.Media.ToString()
             };
         }
 
@@ -87,7 +94,9 @@ namespace SimonsSearch.Service
                 Id = media.Id,
                 Description = media.Description,
                 Name = string.Empty,
-                Weight = weigth
+                Weight = weigth,
+                EntityType = EntityType.Media.ToString(),
+                SerialNumber = media.SerialNumber
             };
         }
 

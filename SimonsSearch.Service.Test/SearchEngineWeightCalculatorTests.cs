@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using SimonsSearch.Service.Constants;
 using SimonsSearch.Service.DataModels;
 using System;
 
@@ -19,6 +20,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(building.Description, searchResult.Description);
             Assert.AreEqual(building.Name, searchResult.Name);
+            Assert.AreEqual(EntityType.Building.ToString(), searchResult.EntityType);
             Assert.AreEqual(5, searchResult.Weight);
         }
 
@@ -34,6 +36,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(building.Description, searchResult.Description);
             Assert.AreEqual(building.Name, searchResult.Name);
+            Assert.AreEqual(EntityType.Building.ToString(), searchResult.EntityType);
             Assert.AreEqual(14, searchResult.Weight);
         }
 
@@ -49,6 +52,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(lck.Description, searchResult.Description);
             Assert.AreEqual(lck.Name, searchResult.Name);
+            Assert.AreEqual(EntityType.Lock.ToString(), searchResult.EntityType);
             Assert.AreEqual(6, searchResult.Weight);
         }
 
@@ -64,6 +68,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(lck.Description, searchResult.Description);
             Assert.AreEqual(lck.Name, searchResult.Name);
+            Assert.AreEqual(EntityType.Lock.ToString(), searchResult.EntityType);
             Assert.AreEqual(46, searchResult.Weight);
         }
 
@@ -80,6 +85,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(lck.Description, searchResult.Description);
             Assert.AreEqual(lck.Name, searchResult.Name);
+            Assert.AreEqual(EntityType.Lock.ToString(), searchResult.EntityType);
             Assert.AreEqual(8, searchResult.Weight);
         }
 
@@ -96,6 +102,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(lck.Description, searchResult.Description);
             Assert.AreEqual(lck.Name, searchResult.Name);
+            Assert.AreEqual(EntityType.Lock.ToString(), searchResult.EntityType);
             Assert.AreEqual(24, searchResult.Weight);
         }
 
@@ -111,6 +118,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(group.Description, searchResult.Description);
             Assert.AreEqual(group.Name, searchResult.Name);
+            Assert.AreEqual(EntityType.Group.ToString(), searchResult.EntityType);
             Assert.AreEqual(5, searchResult.Weight);
         }
 
@@ -126,6 +134,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(group.Description, searchResult.Description);
             Assert.AreEqual(group.Name, searchResult.Name);
+            Assert.AreEqual(EntityType.Group.ToString(), searchResult.EntityType);
             Assert.AreEqual(14, searchResult.Weight);
         }
 
@@ -141,6 +150,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(media.Description, searchResult.Description);
             Assert.AreEqual(string.Empty, searchResult.Name);
+            Assert.AreEqual(EntityType.Media.ToString(), searchResult.EntityType);
             Assert.AreEqual(16, searchResult.Weight);
         }
 
@@ -157,6 +167,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(media.Description, searchResult.Description);
             Assert.AreEqual(string.Empty, searchResult.Name);
+            Assert.AreEqual(EntityType.Media.ToString(), searchResult.EntityType);
             Assert.AreEqual(8, searchResult.Weight);
         }
 
@@ -173,6 +184,7 @@ namespace SimonsSearch.Service.Test
             Assert.IsNotNull(searchResult);
             Assert.AreEqual(media.Description, searchResult.Description);
             Assert.AreEqual(string.Empty, searchResult.Name);
+            Assert.AreEqual(EntityType.Media.ToString(), searchResult.EntityType);
             Assert.AreEqual(24, searchResult.Weight);
         }
 
