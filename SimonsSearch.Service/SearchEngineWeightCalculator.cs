@@ -32,7 +32,10 @@ namespace SimonsSearch.Service
                 Description = @lock.Description,
                 Weight = CalculateLockWeight(@lock, term),
                 EntityType = EntityType.Lock.ToString(),
-                SerialNumber = @lock.SerialNumber
+                SerialNumber = @lock.SerialNumber,
+                Floor = @lock.Floor,
+                RoomNumber = @lock.RoomNumber,
+                Type = @lock.Type
             };
         }
 
@@ -51,7 +54,10 @@ namespace SimonsSearch.Service
                 Name = @lock.Name,
                 Weight = weigth,
                 SerialNumber = @lock.SerialNumber,
-                EntityType = EntityType.Lock.ToString()
+                EntityType = EntityType.Lock.ToString(),
+                Floor = @lock.Floor,
+                RoomNumber = @lock.RoomNumber,
+                Type = @lock.Type
             };
         }
 
@@ -78,7 +84,10 @@ namespace SimonsSearch.Service
                 Description = media.Description,
                 Name = string.Empty,
                 Weight = CalculateMediaWeight(media, term),
-                EntityType = EntityType.Media.ToString()
+                EntityType = EntityType.Media.ToString(),
+                SerialNumber = media.SerialNumber,
+                Owner = media.Owner,
+                Type = media.Type
             };
         }
 
@@ -96,7 +105,9 @@ namespace SimonsSearch.Service
                 Name = string.Empty,
                 Weight = weigth,
                 EntityType = EntityType.Media.ToString(),
-                SerialNumber = media.SerialNumber
+                SerialNumber = media.SerialNumber,
+                Owner = media.Owner,
+                Type = media.Type
             };
         }
 

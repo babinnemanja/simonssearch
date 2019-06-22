@@ -1,24 +1,37 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-2">
             Name
-        </div>
-        <div class="col-sm">
-            Description
-        </div>
-        <div class="col-sm">
-            Type
-        </div>
-         <div class="col-sm">
-            SerialNumber
-        </div>
-        <div class="col-sm">
-            Weight
-        </div>
+         </div>
+         <div class="col-2">
+             Description
+         </div>
+         <div class="col-1">
+             Entity type
+         </div>
+         <div class="col-1">
+             Type
+         </div>
+         <div class="col-2">
+             Serial Number
+         </div>
+         <div class="col-1">
+             Weight
+         </div>
+         <div class="col-1">
+             Owner
+         </div>
+         <div class="col-1">
+             Room Number
+         </div>
+         <div class="col-1">
+             Floor
+         </div>
+         
     </div>
     <hr/>
     <div *ngFor="let searchResult of searchResults">
-        <search-result-list-item [searchResult]="searchResult" class="row"></search-result-list-item>
+        <search-result-list-item [searchResult]="searchResult"></search-result-list-item>
         <hr/>
     </div>
 </div>

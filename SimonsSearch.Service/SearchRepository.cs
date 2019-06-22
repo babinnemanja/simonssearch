@@ -19,7 +19,7 @@ namespace SimonsSearch.Service
                 return _fileData;
             }
 
-            var fileData = LoadFileFromDisk(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\DataFile\\sv_lsm_data.json");
+            var fileData = LoadFileFromDisk(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/DataFile/sv_lsm_data.json");
 
             _fileData = JsonConvert.DeserializeObject<DataFile>(fileData);
 

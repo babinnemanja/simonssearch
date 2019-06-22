@@ -5,7 +5,7 @@ import { SearchResult } from '../shared/search-result.model';
 
 @Injectable()
 export class SearchService {
-    searchResultApi = 'https://localhost:44375/api/search';
+    searchResultApi = 'https://simonssearchapi.azurewebsites.net/api/search';
 
     constructor(private http: HttpClient) { }
 

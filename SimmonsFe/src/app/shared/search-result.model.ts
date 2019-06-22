@@ -1,8 +1,12 @@
 export interface SearchResult {
-    Id: string;
-    Description: string;
-    Name: string;
-    Weight: number;
-    EntityType: string;
-    SerialNumber: string;
+    id: string;
+    description: string;
+    name: string;
+    weight: number;
+    entityType: string;
+    serialNumber: string;
+    owner: string;
+    type: string;
+    floor: string;
+    roomNumber: string;
 }
